@@ -2,17 +2,13 @@ new_game: Hey Eric, lets play a game. I have some math questions for you. Should
 
 question: Alright lets start, what is {{ nums[0] }} plus {{ nums[1] }} ?
 
-win: Nice work buddy.
+win: Nice work, buddy.
 
-wrong: Sorry man. Do you want to try again ?
+# wrong: Sorry man. Do you want to try again ?
 
-over: Come on man. Are you an idiot ?
+over: Come on, man. Are you an, idiot ?
 
-noanswer: Okay buddy. Let me know when you are ready.
-
-smoke: Should we go for a smoke ?
-
-lets: Alright , lets go. 
+noanswer: Okay buddy... Let me know when you are ready.
 
 # def new_game() :
 #     smoke = render_template('smoke')

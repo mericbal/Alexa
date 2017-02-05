@@ -9,31 +9,31 @@ logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 
+# def start() :
+  # statement('my game started!')
+
 def new_game() :
-  new_game_msg = render_template('new_game')
+  # hi = 'Hi say yes or no '
+  # return question(hi)
+  new_game_msg = 'Hey guys, lets play a game. I have some math questions for you. Should we start ?'
   return question(new_game_msg)
 
-# @ask.intent('NoIntent') #come back later
-
-
 @ask.intent("YesIntent")
-
 def round() :
-  # option 1
-  numbers = [ randint(0,9) for _ in range(2)]
-  round_msg = render_template('question', nums=numbers)
+  numbers = [ randint(0,99) for _ in range(2) ]
+  # round_msg = render_template('question', nums=numbers)
+  round_msg = "Alright , what is %s plus %s ?" % (numbers[0],numbers[1])
   session.attributes['total'] = numbers[0] + numbers[1]
   return question(round_msg)
 
- # option 2
-  # number1 = randint(0, 9) # come back later
-  # number2 = randint(0, 9) # come back later
-  # round_msg = render_template('question', number1=number1, number2=number2)
-  # session.attributes['total'] = number1 + number2
-  # return question(round_msg)
+@ask.intent('NoIntent')
+def no_intent() :
+  noo = render_template('noanswer')
+  return statement(noo)
+  # bye = 'Then why did you wake me up ? ... Bye ...'
+  # return statement(bye)
 
 @ask.intent('FirstAnswerIntent', convert={'first': int})
-
 def answer(first) :
   correct = session.attributes['total']
   if first == correct:
@@ -56,9 +56,7 @@ def answer(first) :
   # return statement(reply)
 
 
-
 if __name__ == '__main__':
   app.run(debug=True)
-
 
 # MB
