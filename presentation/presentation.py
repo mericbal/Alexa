@@ -1,6 +1,6 @@
 import logging
 from flask import Flask, render_template
-from flask_ask import Ask, statement, question
+from flask_ask import Ask, statement, question, session
 
 app = Flask(__name__)
 ask = Ask(app, "/")
@@ -12,7 +12,8 @@ def intro():
 
 @ask.intent("YesIntent")
 def presentation():
-	return render_template("presentation")
+	reply = render_template('presentation')
+	return statement(reply)
 
 @ask.intent("NoIntent")
 def no_answer():
